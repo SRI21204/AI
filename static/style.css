@@ -1,0 +1,55 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
+h1 {
+    color: #2d8cf0;
+    margin-bottom: 10px;
+}
+
+.subtext {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Option Cards */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.option {
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 15px;
+    border-radius: 12px;
+    background: #2d8cf0;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.option:hover {
+    background: linear-gradient(135deg, #2d8cf0, black);
+    color: #2d8cf0;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}

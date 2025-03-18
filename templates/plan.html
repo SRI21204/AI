@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Study Plan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2d8cf0;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #2d8cf0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #2d8cf0, black);
+        }
+
+        p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create a Study Plan</h1>
+        <input type="text" id="studyTopic" placeholder="Enter a topic">
+        <input type="text" id="studyDuration" placeholder="Enter duration (e.g., 2 weeks)">
+        <button onclick="createPlan()">Create Plan</button>
+        <p id="studyPlan"></p>
+        <button onclick="goHome()">⬅ Back</button>
+    </div>
+
+    <script>
+        function createPlan() {
+            const topic = document.getElementById('studyTopic').value;
+            const duration = document.getElementById('studyDuration').value;
+            fetch('/plan', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ topic, duration })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('studyPlan').innerHTML = "<b>Study Plan:</b><br>" + data.study_plan.replace(/\n/g, "<br>");
+            });
+        }
+
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
